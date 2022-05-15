@@ -14,7 +14,7 @@ namespace assignment1_archi
 {
     public partial class Form1 : Form
     {
-        private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\pc\\Documents\\Assignment.accdb";
+        private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\pc\\source\\repos\\assignment1_archi\\assignment1_archi\\bin\\Debug\\Assignment.accdb";
 
         private static OleDbConnection conn = new OleDbConnection(connectionString);
         Stores currentStore;
