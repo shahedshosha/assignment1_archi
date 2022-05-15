@@ -68,7 +68,7 @@ namespace assignment1_archi
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(246, 302);
+            this.btnDelete.Location = new System.Drawing.Point(246, 332);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(102, 54);
             this.btnDelete.TabIndex = 98;
@@ -79,7 +79,7 @@ namespace assignment1_archi
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(138, 302);
+            this.btnUpdate.Location = new System.Drawing.Point(138, 332);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(102, 54);
             this.btnUpdate.TabIndex = 97;
@@ -90,7 +90,7 @@ namespace assignment1_archi
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(30, 302);
+            this.btnAdd.Location = new System.Drawing.Point(30, 332);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(102, 54);
             this.btnAdd.TabIndex = 96;
@@ -102,7 +102,7 @@ namespace assignment1_archi
             // 
             this.txtStorePhone.Location = new System.Drawing.Point(30, 194);
             this.txtStorePhone.Name = "txtStorePhone";
-            this.txtStorePhone.Size = new System.Drawing.Size(184, 22);
+            this.txtStorePhone.Size = new System.Drawing.Size(318, 22);
             this.txtStorePhone.TabIndex = 95;
             // 
             // lblStorePhone
@@ -118,7 +118,7 @@ namespace assignment1_archi
             // 
             this.txtStoreName.Location = new System.Drawing.Point(30, 131);
             this.txtStoreName.Name = "txtStoreName";
-            this.txtStoreName.Size = new System.Drawing.Size(184, 22);
+            this.txtStoreName.Size = new System.Drawing.Size(318, 22);
             this.txtStoreName.TabIndex = 93;
             // 
             // lblStoreName
@@ -143,7 +143,7 @@ namespace assignment1_archi
             // 
             this.txtStoreID.Location = new System.Drawing.Point(30, 66);
             this.txtStoreID.Name = "txtStoreID";
-            this.txtStoreID.Size = new System.Drawing.Size(184, 22);
+            this.txtStoreID.Size = new System.Drawing.Size(318, 22);
             this.txtStoreID.TabIndex = 91;
             // 
             // Form1
