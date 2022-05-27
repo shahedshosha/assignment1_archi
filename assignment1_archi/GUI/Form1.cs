@@ -1,4 +1,5 @@
-﻿using project.Helper;
+﻿using assignment1_archi.entities;
+using project.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,18 +13,88 @@ using System.Windows.Forms;
 
 namespace assignment1_archi
 {
+    //this is 3-tier updated project
     public partial class Form1 : Form
     {
-        private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\pc\\source\\repos\\assignment1_archi\\assignment1_archi\\bin\\Debug\\Assignment.accdb";
-
-        private static OleDbConnection conn = new OleDbConnection(connectionString);
         Stores currentStore;
-
         public Form1()
         {
             InitializeComponent();
         }
-        public static void InsertCommand(Stores store)
+       
+        private void RefreshdataGridViewStoreManage()
+        {
+            dataGridViewStoreManage.DataSource = StoresDAL.GetAllCommand();
+        }
+        private void ClearForm()
+        {
+            txtStoreName.Text = "";
+            txtStoreID.Text = "";
+            txtStorePhone.Text = "";
+        }
+
+        private void dataGridViewStoreManage_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            currentStore = new Stores();
+            DataGridViewRow row = new DataGridViewRow();
+
+            row = dataGridViewStoreManage.Rows[e.RowIndex];
+            currentStore.StId = int.Parse(row.Cells[0].Value.ToString());
+            currentStore.StoreID = row.Cells[1].Value.ToString();
+            currentStore.StoreName = row.Cells[2].Value.ToString();
+            currentStore.StorePhone = row.Cells[3].Value.ToString();
+            txtStoreID.Text = currentStore.StoreID;
+            txtStoreName.Text = currentStore.StoreName;
+            txtStorePhone.Text = currentStore.StorePhone;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Stores store = new Stores();
+            store.StoreName = txtStoreName.Text;
+            store.StoreID = txtStoreID.Text;
+            store.StorePhone = txtStorePhone.Text;
+            StoresDAL.InsertCommand(store);
+            RefreshdataGridViewStoreManage();
+            MessageBox.Show("Store Successfully Added");
+            ClearForm();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            currentStore.StoreName = txtStoreName.Text;
+            currentStore.StoreID = txtStoreID.Text;
+            currentStore.StorePhone = txtStorePhone.Text;
+            StoresDAL.UpdateCommand(currentStore);
+            RefreshdataGridViewStoreManage();
+            MessageBox.Show("Store Successfully Updated");
+            ClearForm();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            StoresDAL.DeleteCommand(currentStore);
+
+            RefreshdataGridViewStoreManage();
+
+            MessageBox.Show("Store Successfully Deleted");
+
+            ClearForm();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            RefreshdataGridViewStoreManage();
+        }
+    }
+}
+
+
+
+/*
+ 
+ 
+  public static void InsertCommand(Stores store)
         {
             string commandText = string.Format("Insert into Stores(StoreID,StoreName,StorePhone)" +
             "values('{0}','{1}','{2}')", store.StoreID, store.StoreName, store.StorePhone);
@@ -70,69 +141,6 @@ namespace assignment1_archi
 
             return dt;
         }
-        private void RefreshdataGridViewStoreManage()
-        {
-            dataGridViewStoreManage.DataSource = GetAllCommand();
-        }
-        private void ClearForm()
-        {
-            txtStoreName.Text = "";
-            txtStoreID.Text = "";
-            txtStorePhone.Text = "";
-        }
-
-        private void dataGridViewStoreManage_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            currentStore = new Stores();
-            DataGridViewRow row = new DataGridViewRow();
-
-            row = dataGridViewStoreManage.Rows[e.RowIndex];
-            currentStore.StId = int.Parse(row.Cells[0].Value.ToString());
-            currentStore.StoreID = row.Cells[1].Value.ToString();
-            currentStore.StoreName = row.Cells[2].Value.ToString();
-            currentStore.StorePhone = row.Cells[3].Value.ToString();
-            txtStoreID.Text = currentStore.StoreID;
-            txtStoreName.Text = currentStore.StoreName;
-            txtStorePhone.Text = currentStore.StorePhone;
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Stores store = new Stores();
-            store.StoreName = txtStoreName.Text;
-            store.StoreID = txtStoreID.Text;
-            store.StorePhone = txtStorePhone.Text;
-            InsertCommand(store);
-            RefreshdataGridViewStoreManage();
-            MessageBox.Show("Store Successfully Added");
-            ClearForm();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            currentStore.StoreName = txtStoreName.Text;
-            currentStore.StoreID = txtStoreID.Text;
-            currentStore.StorePhone = txtStorePhone.Text;
-            UpdateCommand(currentStore);
-            RefreshdataGridViewStoreManage();
-            MessageBox.Show("Store Successfully Updated");
-            ClearForm();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DeleteCommand(currentStore);
-
-            RefreshdataGridViewStoreManage();
-
-            MessageBox.Show("Store Successfully Deleted");
-
-            ClearForm();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            RefreshdataGridViewStoreManage();
-        }
-    }
-}
+ 
+ 
+ */
